@@ -1,0 +1,18 @@
+.main {
+  background-image: url(./../assets/15680938_5610411.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* margin: auto 0; */
+}
+.container {
+  background-color: rgb(241, 210, 237);
+  /* background-image: url(./../assets/purple-kawaii-cloud-sticker-preview-removebg-preview.png); */
+  width: 600px;
+  height: 700px;
+  
+}
+.maintodobox {
+  background-color: beige;
+  width: 500px;
+  height: 600px;
+}
