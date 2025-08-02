@@ -4,7 +4,6 @@ import  cheklist from "./../assets/checklist_9086471-removebg-preview.png";
 import   pencil from "./../assets/download__2_-removebg-preview.png";
 import   cloud from "./../assets/purple-kawaii-cloud-sticker-preview-removebg-preview.png";
 import  heart from "./../assets/love-dating_15865555-removebg-preview.png";
-import cutipencil from "./../assets/pencil_15764164-removebg-preview.png";
 
 export default function Todo() {
   const [inputdata, setinputdata] = useState("");
@@ -14,10 +13,12 @@ export default function Todo() {
   console.log("this is inputdata", inputdata);
 
   const handleadd = () => {
-    if (inputdata.trim() === "") return;
+    // if (inputdata.trim() === "") return;
+    if (inputdata === "") {
+      return
+    }
 
     if (editedid !== null) {
-      // Edit mode: update the task
       const updatedTasks = tasks.map((task, i) =>
         i === editedid ? inputdata : task
       );
@@ -51,25 +52,29 @@ export default function Todo() {
   }
 
   return (
-    <div className="main flex justify-center items-center h-[100vh]">
-      <div className="container relative items-center flex justify-center  ">
-      <img className="h-[15%] top-5 left-5 absolute w-[15%]" src={cheklist} alt="no" />
+    <div className="main flex justify-center items-center h-[100vh] ">
+
+      <div className="container h-[700px] w-[600px]  relative items-center flex justify-center rounded-2xl  "
+      style={{backgroundColor:"rgb(241, 210, 237)"}}
+      >
+      <img className="h-[14%] top-5 left-5 absolute w-[15%]" src={cheklist} alt="no" />
       <img className="h-[13%] top-5 right-5 absolute w-[13%]" src={pencil} alt="no" />
       <img className="h-[15%] bottom-5 right-5 absolute w-[20%]" src={cloud} alt="no" />
 
-      {/* <img className="h-[15%] bottom-5 left-5 absolute w-[20%]" src={cutipencil} alt="no" /> */}
       <img className="h-[15%] bottom-2 left-2 absolute w-[20%]" src={heart} alt="no" />
-        <div className="maintodobox px-20 " >
-          <h1 className="text-center font-medium mt-6 mb-8  text-3xl">
+        <div className="maintodobox  h-[600px] w-[500px] px-20 overflow-x-scroll scroll-smooth lg:overflow-x-hidden " style={{ backgroundColor: "beige" }}
+ >
+          <h1 className="text-center font-medium mt-6 mb-2  text-3xl">
             📝 Todo List
           </h1>
+          <h1 className="text-center pl-6 mb-6">{new Date().toUTCString().slice(0,16)}</h1>
           <div className="inputbox  flex justify-center gap-6 items-center ">
             <input
               onChange={(e) => setinputdata(e.target.value)}
               className="rounded-lg border-2 px-4 py-4 w-[80%] shadow-2xl focus:border-pink-200 outline-none   border-pink-300"
               type="text"
               value={inputdata}
-              placeholder="tasks"
+              placeholder="task"
             />
             <button
               onClick={() => handleadd()}
